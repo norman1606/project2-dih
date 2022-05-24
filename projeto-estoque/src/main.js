@@ -1,18 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-import MyLogin from './views/MyLogin.vue';
-
-import { createRouter, createWebHistory } from 'vue-router';
-
-const routes = [
-    { path: '/', component: MyLogin }
-];
-
-const router = createRouter({
-    routes,
-    history: createWebHistory()
-})
+import router from './router';
 
 const app = createApp(App);
 
