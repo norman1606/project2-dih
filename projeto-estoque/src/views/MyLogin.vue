@@ -1,9 +1,16 @@
 <template>
     <div class="container-fluid">
         <div class="row g-0 vh-100 vw-100">
-            <div class="col-7 left-login">col-8</div>
+            <div class="col-7 d-flex justify-content-center align-items-center left-login">
+                <img src="../assets/images/login.png" alt="img-login">
+            </div>
             <div class="col-5 d-flex justify-content-center align-items-center">
+
                 <div class="col-8">
+                    <div class="d-flex justify-content-between criar-conta">
+                        <p>Nãp possui uma conta?</p>
+                        <button type="button" class="btn btn-outline-dark botao-google">Criar Conta</button>
+                    </div>
                     <h2 class="mb-5 title-login">Login</h2>
 
                     <form>
@@ -58,7 +65,7 @@ html {
 }
 
 .left-login {
-    background-color: #f2f2f2;
+    background-color: #e8edf5;
 }
 
 .botao-logar, .botao-google {
@@ -67,6 +74,10 @@ html {
 
 .title-login {
     font-weight: bold;
+}
+
+.criar-conta {
+    
 }
 
 </style>
