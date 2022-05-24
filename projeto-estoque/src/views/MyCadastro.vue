@@ -1,21 +1,16 @@
 <template>
     <div class="container-fluid">
-        <div class="row g-0 vh-100 vw-100">
-            <div class="col-7 d-flex justify-content-center align-items-center right-login">
-                <img src="../assets/images/login.png" alt="img-login">
-            </div>
-            <div class="col-5 d-flex justify-content-center align-items-center">
-
+        <div class="row g-0 vh-100 vw-100">  
+            <div class="col-5 d-flex justify-content-center align-items-center left-cadastro">
                 <div class="col-8">
-                    <div class="d-flex justify-content-between criar-conta">
-                        <p>Nãp possui uma conta?</p>
-                        <button type="button" class="btn btn-outline-dark botao-google" @click="cadastrar">
-                            Criar Conta
-                        </button>
-                    </div>
-                    <h2 class="mb-5 title-login">Login</h2>
+                    <h2 class="mb-5 title-cadastro">Faça seu Cadastro</h2>
 
                     <form>
+                        <div class="mb-3">
+                            <label for="user" class="form-label">Usuário</label>
+                            <input type="text" class="form-control" id="user" aria-describedby="emailHelp" autocomplete="off"
+                            placeholder="andre.silva" v-model="form.user">
+                        </div>
                         <div class="mb-3">
                             <label for="Email" class="form-label">Email</label>
                             <input type="email" class="form-control" id="email" aria-describedby="emailHelp" autocomplete="off"
@@ -24,16 +19,24 @@
                         <div class="mb-3">
                             <label for="Password" class="form-label d-flex justify-content-between">
                                 Senha
-                                <a href="#">Esqueceu sua senha?</a>
                             </label>
                             <input type="password" class="form-control" id="password" placeholder="Digite sua senha" v-model="form.password">
                         </div>
+                        <div class="mb-3">
+                            <label for="Password" class="form-label d-flex justify-content-between">
+                                Confirme sua Senha
+                            </label>
+                            <input type="password" class="form-control" id="password" placeholder="Confirme sua senha" v-model="form.password">
+                        </div>
                         <div class=" d-grid gap-2 d-flex justify-content-center ">
-                        <button type="submit" class="btn btn-primary botao-logar">Entrar</button>
-                        <button type="button" class="btn btn-outline-dark botao-google">Google</button>
+                            <button type="submit" class="btn btn-primary botao-cadastrar">Cadastrar</button>
+                            <button type="button" class="btn btn-outline-dark botao-voltar" @click="voltaLogin">Voltar</button>
                         </div>
                     </form>
                 </div>
+            </div>
+            <div class="col-7 d-flex justify-content-center align-items-center ">
+                <img src="../assets/images/cadastro.png" alt="img-cadastro">
             </div>
         </div>       
     </div>
@@ -51,8 +54,8 @@ export default {
     },
 
     methods: {
-        cadastrar() {
-            this.$router.push('/cadastro')
+        voltaLogin() {
+            this.$router.push('/')
         }
     }
 }
@@ -71,15 +74,15 @@ html {
     margin-left: 0;
 }
 
-.right-login {
+.left-cadastro {
     background-color: #e8edf5;
 }
 
-.botao-logar, .botao-google {
+.botao-cadastrar, .botao-voltar {
     padding: 5px 70px 5px 70px;
 }
 
-.title-login {
+.title-cadastro {
     font-weight: bold;
 }
 
