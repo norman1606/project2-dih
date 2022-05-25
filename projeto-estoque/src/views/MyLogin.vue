@@ -1,6 +1,6 @@
 <template>
-    <div class="container-fluid">
-        <div class="row g-0 vh-100 vw-100">
+    <div class="container-fluid g-0">
+        <div class="row vh-100 vw-100">
             <div class="col-7 d-flex justify-content-center align-items-center right-login">
                 <img src="../assets/images/login.png" alt="img-login">
             </div>
@@ -13,26 +13,70 @@
                             Criar Conta
                         </button>
                     </div>
-                    <h2 class="mb-5 title-login">Login</h2>
+                    <div class="formulario">
+                        <h2 class="mb-5 title-login">Login</h2>
 
-                    <form>
+                        <FormKit
+                            type="form"
+                            :actions="false"
+                            v-model="formData"
+                        >
                         <div class="mb-3">
-                            <label for="Email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" autocomplete="off"
-                            placeholder="andresilva@email.com" v-model="form.email">
+                            <FormKit
+                                type="email"
+                                name="email"
+                                label="Email"
+                                label-class= "form-label"
+                                input-class= "form-control"
+                                placeholder="andresilva@email.com"
+                                validation="required"
+                            />
                         </div>
                         <div class="mb-3">
-                            <label for="Password" class="form-label d-flex justify-content-between">
-                                Senha
-                                <a href="#">Esqueceu sua senha?</a>
-                            </label>
-                            <input type="password" class="form-control" id="password" placeholder="Digite sua senha" v-model="form.password">
+                            <FormKit
+                                type="password"
+                                name="password"
+                                label="Senha"
+                                label-class= "form-label"
+                                input-class= "form-control"
+                                placeholder="Digite sua senha"
+                                validation="required|length:6"
+                            />
                         </div>
                         <div class=" d-grid gap-2 d-flex justify-content-center ">
-                        <button type="submit" class="btn btn-primary botao-logar">Entrar</button>
-                        <button type="button" class="btn btn-outline-dark botao-google">Google</button>
+                            <FormKit
+                                type="button"
+                                name="button"
+                                label="Entrar"
+                                input-class="btn btn-primary botao-logar"
+                                @click="logar"
+                            />
+                            <FormKit
+                                type="button"
+                                name="button"
+                                label="Google"
+                                input-class="btn btn-outline-dark botao-google"
+                            />
                         </div>
-                    </form>
+                        </FormKit>
+
+                            <!--<div class="mb-3">
+                                <label for="Email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" autocomplete="off"
+                                placeholder="andresilva@email.com" v-model="form.email">
+                            </div>
+                            <div class="mb-3">
+                                <label for="Password" class="form-label d-flex justify-content-between">
+                                    Senha
+                                    <a href="#">Esqueceu sua senha?</a>
+                                </label>
+                                <input type="password" class="form-control" id="password" placeholder="Digite sua senha" v-model="form.password">
+                            </div>
+                            <div class=" d-grid gap-2 d-flex justify-content-center ">
+                                <button type="submit" class="btn btn-primary botao-logar">Entrar</button>
+                                <button type="button" class="btn btn-outline-dark botao-google">Google</button>
+                            </div>-->
+                    </div>
                 </div>
             </div>
         </div>       
@@ -40,20 +84,23 @@
 </template>
 
 <script>
+
 export default {
     data() {
         return {
-            form: {
-                email:"",
-                password:""
-            }
+           formData: {}
         }
     },
 
     methods: {
         cadastrar() {
             this.$router.push('/cadastro')
+        },
+
+        logar() {
+            console.log(this.formData)
         }
+
     }
 }
 </script>
@@ -81,6 +128,10 @@ html {
 
 .title-login {
     font-weight: bold;
+}
+
+.criar-conta {
+    margin-bottom: 90px;
 }
 
 

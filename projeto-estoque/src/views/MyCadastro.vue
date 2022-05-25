@@ -1,38 +1,79 @@
 <template>
-    <div class="container-fluid">
+    <div class="container-fluid g-0">
         <div class="row g-0 vh-100 vw-100">  
             <div class="col-5 d-flex justify-content-center align-items-center left-cadastro">
                 <div class="col-8">
                     <h2 class="mb-5 title-cadastro">Faça seu Cadastro</h2>
 
-                    <form>
+                    <FormKit
+                            type="form"
+                            :actions="false"
+                            v-model="formData"
+                        >
                         <div class="mb-3">
-                            <label for="user" class="form-label">Usuário</label>
-                            <input type="text" class="form-control" id="user" aria-describedby="emailHelp" autocomplete="off"
-                            placeholder="andre.silva" v-model="form.user">
+                            <FormKit
+                                type="text"
+                                name="user"
+                                label="Usuário"
+                                label-class= "form-label"
+                                input-class= "form-control"
+                                placeholder="andre.silva"
+                                validation="required"
+                                v-model="formData.user"
+                            />
                         </div>
                         <div class="mb-3">
-                            <label for="Email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" autocomplete="off"
-                            placeholder="andresilva@email.com" v-model="form.email">
+                            <FormKit
+                                type="email"
+                                name="email"
+                                label="Email"
+                                label-class= "form-label"
+                                input-class= "form-control"
+                                placeholder="andresilva@email.com"
+                                validation="required"
+                                v-model="formData.email"
+                            />
                         </div>
                         <div class="mb-3">
-                            <label for="Password" class="form-label d-flex justify-content-between">
-                                Senha
-                            </label>
-                            <input type="password" class="form-control" id="password" placeholder="Digite sua senha" v-model="form.password">
+                            <FormKit
+                                type="password"
+                                name="password"
+                                label="Senha"
+                                label-class= "form-label"
+                                input-class= "form-control"
+                                placeholder="Digite sua senha"
+                                validation="required|length:6"
+                                v-model="formData.password"
+                            />
                         </div>
                         <div class="mb-3">
-                            <label for="Password" class="form-label d-flex justify-content-between">
-                                Confirme sua Senha
-                            </label>
-                            <input type="password" class="form-control" id="password" placeholder="Confirme sua senha" v-model="form.password">
+                            <FormKit
+                                type="password"
+                                name="password"
+                                label="Confirme sua senha"
+                                label-class= "form-label"
+                                input-class= "form-control"
+                                placeholder="Confirme sua senha"
+                                validation="required|length:6"
+                            />
                         </div>
                         <div class=" d-grid gap-2 d-flex justify-content-center ">
-                            <button type="submit" class="btn btn-primary botao-cadastrar">Cadastrar</button>
-                            <button type="button" class="btn btn-outline-dark botao-voltar" @click="voltaLogin">Voltar</button>
+                            <FormKit
+                                type="button"
+                                name="button"
+                                label="Cadastrar"
+                                input-class="btn btn-primary botao-logar"
+                                @click="cadastrar"
+                            />
+                            <FormKit
+                                type="button"
+                                name="button"
+                                label="Voltar"
+                                input-class="btn btn-outline-dark botao-google"
+                                @click="voltaLogin"
+                            />
                         </div>
-                    </form>
+                        </FormKit>
                 </div>
             </div>
             <div class="col-7 d-flex justify-content-center align-items-center ">
@@ -46,9 +87,8 @@
 export default {
     data() {
         return {
-            form: {
-                email:"",
-                password:""
+            formData: {
+                
             }
         }
     },
@@ -56,9 +96,15 @@ export default {
     methods: {
         voltaLogin() {
             this.$router.push('/')
+        },
+
+        cadastrar() {
+
+        }
+
         }
     }
-}
+
 </script>
 
 <style>
