@@ -49,7 +49,7 @@
                         <div class="mb-3">
                             <FormKit
                                 type="password"
-                                name="password"
+                                name="confirm-password"
                                 label="Confirme sua senha"
                                 label-class= "form-label"
                                 input-class= "form-control"
@@ -99,6 +99,8 @@ export default {
         },
 
         cadastrar() {
+            this.$store.commit('cadastrar', {...this.formData});
+            console.log(this.$store.state);
 
         }
 

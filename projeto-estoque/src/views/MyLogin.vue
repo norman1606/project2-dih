@@ -59,23 +59,6 @@
                             />
                         </div>
                         </FormKit>
-
-                            <!--<div class="mb-3">
-                                <label for="Email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" autocomplete="off"
-                                placeholder="andresilva@email.com" v-model="form.email">
-                            </div>
-                            <div class="mb-3">
-                                <label for="Password" class="form-label d-flex justify-content-between">
-                                    Senha
-                                    <a href="#">Esqueceu sua senha?</a>
-                                </label>
-                                <input type="password" class="form-control" id="password" placeholder="Digite sua senha" v-model="form.password">
-                            </div>
-                            <div class=" d-grid gap-2 d-flex justify-content-center ">
-                                <button type="submit" class="btn btn-primary botao-logar">Entrar</button>
-                                <button type="button" class="btn btn-outline-dark botao-google">Google</button>
-                            </div>-->
                     </div>
                 </div>
             </div>
@@ -98,7 +81,14 @@ export default {
         },
 
         logar() {
-            console.log(this.formData)
+            this.$store.commit('logar',{...this.formData})
+            if(this.$store.state.usuarioLogado == undefined){
+                alert('Usuario nao encontrado')
+            }
+            else{
+                this.$router.push('/inventario')
+            }
+
         }
 
     }
