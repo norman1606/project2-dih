@@ -24,4 +24,10 @@
   opacity: 0;
 }
 
+.formkit-messages {
+  list-style: none;
+  color: red;
+  padding: 0;
+}
+
 </style>

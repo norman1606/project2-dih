@@ -17,8 +17,8 @@
                     </div>
                     <div class=" d-grid gap-3 mt-3">
                         <h5 class="text-white">Produtos</h5>
-                        <button type="button" class="btn btn-outline-light">Cadastrar</button>
-                        <button type="button" class="btn btn-outline-light">Empréstimo</button>
+                        <button type="button" class="btn btn-outline-light" @click="toTelaCadastitem">Cadastrar</button>
+                        <button type="button" class="btn btn-outline-light" @click="toTelaEmprestimo">Empréstimo</button>
                     </div>
                 </div>
             </div>
@@ -34,6 +34,12 @@ export default {
         },
         toTelaCadastColab() {
             this.$router.push('cadastroColab')
+        },
+        toTelaCadastitem() {
+           this.$router.push('cadastroItem') 
+        },
+        toTelaEmprestimo() {
+            this.$router.push('emprestimo') 
         }
 
     }

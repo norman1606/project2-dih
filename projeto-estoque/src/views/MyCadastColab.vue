@@ -37,7 +37,7 @@
                                         label-class= "form-label"
                                         input-class= "form-control"
                                         validation= "required"
-                                        :option="[
+                                        :options="[
                                         'Masculino',
                                         'Feminino',
                                         ]"
@@ -50,7 +50,7 @@
                                         label="Data Nascimento"
                                         label-class= "form-label"
                                         input-class= "form-control"
-                                        validation= "required"
+                                        :validation= "[['required'], ['date_before', new Date]]"
                                     />
                                 </div>
                                 <div class="col-4 mb-3">
@@ -83,7 +83,7 @@
                                         label-class= "form-label"
                                         input-class= "form-control"
                                         validation= "required"
-                                        :option="[
+                                        :options="[
                                         'Junior',
                                         'Pleno',
                                         'Senior',

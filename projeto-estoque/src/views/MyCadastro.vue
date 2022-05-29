@@ -13,7 +13,7 @@
                         <div class="mb-3">
                             <FormKit
                                 type="text"
-                                name="user"
+                                name="nome"
                                 label="Usuário"
                                 label-class= "form-label"
                                 input-class= "form-control"
@@ -100,7 +100,7 @@ export default {
 
         cadastrar() {
             this.$store.commit('cadastrar', {...this.formData});
-            console.log(this.$store.state);
+            console.log(this.$store.state.pessoa);
 
         }
 

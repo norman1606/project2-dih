@@ -13,7 +13,7 @@
                             Criar Conta
                         </button>
                     </div>
-                    <div class="formulario">
+                    <div class="formulario-login">
                         <h2 class="mb-5 title-login">Login</h2>
 
                         <FormKit
@@ -82,7 +82,7 @@ export default {
 
         logar() {
             this.$store.commit('logar',{...this.formData})
-            if(this.$store.state.usuarioLogado == undefined){
+            if(this.$store.state.pessoa.usuarioLogado == undefined){
                 alert('Usuario nao encontrado')
             }
             else{
