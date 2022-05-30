@@ -6,6 +6,7 @@ import MyInventary from '../views/MyInventary.vue';
 import MyCadastColab from '../views/MyCadastColab.vue'
 import MyCadastItem from '../views/MyCadastItem.vue'
 import MyEmprestItem from '../views/MyEmprestItem.vue'
+import MyListColab from '../views/MyListColab.vue'
 
 const routes = [
     { path: '/', component: MyLogin },
@@ -13,7 +14,8 @@ const routes = [
     { path: '/inventario', component: MyInventary},
     { path:'/cadastroColab', component: MyCadastColab},
     { path:'/cadastroItem', component:MyCadastItem},
-    { path:'/emprestimo', component: MyEmprestItem}
+    { path:'/emprestimo', component: MyEmprestItem},
+    { path: '/listaColab', component: MyListColab}
 
 ];
 

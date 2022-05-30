@@ -42,7 +42,7 @@
                                 label-class= "form-label"
                                 input-class= "form-control"
                                 placeholder="Digite sua senha"
-                                validation="required|length:6"
+                                validation="required|length:8"
                                 v-model="formData.password"
                             />
                         </div>
@@ -54,7 +54,7 @@
                                 label-class= "form-label"
                                 input-class= "form-control"
                                 placeholder="Confirme sua senha"
-                                validation="required|length:6"
+                                validation="required|length:8|confirm:password"
                             />
                         </div>
                         <div class=" d-grid gap-2 d-flex justify-content-center ">
@@ -101,6 +101,7 @@ export default {
         cadastrar() {
             this.$store.commit('cadastrar', {...this.formData});
             console.log(this.$store.state.pessoa);
+            this.$router.push('/')
 
         }
 

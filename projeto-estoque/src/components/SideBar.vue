@@ -8,12 +8,12 @@
                     <div class=" d-grid gap-3 mt-3">
                         <h5 class="text-white">Geral</h5>
                         <button type="button" class="btn btn-outline-light" @click="toTelaInvent">Inventário</button>
-                        <button type="button" class="btn btn-outline-light"><img src="../assets/images/Vector.png" alt="logo">    Sair</button>
+                        <button type="button" class="btn btn-outline-light" @click="toTelaLogin"><img src="../assets/images/Vector.png" alt="logo">    Sair</button>
                     </div>
                     <div class=" d-grid gap-3 mt-3">
                         <h5 class="text-white">Colaboradores</h5>
                         <button type="button" class="btn btn-outline-light" @click="toTelaCadastColab">Cadastrar</button>
-                        <button type="button" class="btn btn-outline-light">Listar</button>
+                        <button type="button" class="btn btn-outline-light" @click="toTelaListaColab">Listar</button>
                     </div>
                     <div class=" d-grid gap-3 mt-3">
                         <h5 class="text-white">Produtos</h5>
@@ -40,6 +40,12 @@ export default {
         },
         toTelaEmprestimo() {
             this.$router.push('emprestimo') 
+        },
+        toTelaLogin() {
+            this.$router.push('/')
+        },
+        toTelaListaColab() {
+            this.$router.push('listaColab')
         }
 
     }

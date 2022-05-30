@@ -1,12 +1,16 @@
 <template>
     <div class="card-estat row">
-        <p class="col-12">30</p>
-        <p class="col-12">Colaboradores</p>
+        <p class="col-12 numeros">{{ valorEstat }}</p>
+        <p class="col-12 titulo">{{ tituloEstat }}</p>
     </div>
 </template>
 
 <script>
 export default {
+    props: {
+        valorEstat: Number,
+        tituloEstat: String
+    }
     
 }
 </script>
@@ -23,6 +27,15 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.card-estat .numeros{
+    font-size: 45px;
+    font-weight: bold;
+    color: #686666;
+}
+.card-estat .titulo{
+    font-size: 20px;
 }
 
 

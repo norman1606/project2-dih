@@ -9,9 +9,12 @@
   },
   "dependencies": {
     "@formkit/vue": "^1.0.0-beta.8",
+    "axios": "^0.27.2",
     "core-js": "^3.8.3",
     "vue": "^3.2.13",
+    "vue-axios": "^3.4.1",
     "vue-router": "^4.0.15",
+    "vue3-gravatar": "^3.0.0",
     "vuelidate": "^0.7.7",
     "vuex": "^4.0.2"
   },

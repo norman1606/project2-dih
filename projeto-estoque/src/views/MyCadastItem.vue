@@ -57,15 +57,7 @@
                                     />
                                 </div> 
                             </div>
-                        </FormKit>
-                    </div>
-                    <div class="dados-complementares">
-                        <h4 class="mb-4 mt-5">Dados Complementares</h4>
-                        <FormKit
-                            type="form"
-                            :actions="false"
-                            v-model="listaItem2"
-                        >
+                            <h4 class="mb-4 mt-5">Dados Complementares</h4>
                             <div class="row g-2">
                                 <div class=" col-3 mb-3">
                                     <FormKit
@@ -79,12 +71,12 @@
                                 </div>
                                 <div class=" col-9 mb-3">
                                     <FormKit
-                                        type="text"
+                                        type="url"
                                         name="url"
                                         label="URL da Foto"
                                         label-class= "form-label"
                                         input-class= "form-control"
-                                        validation= "required"
+                                        validation= "url"
                                     />
                                 </div>
                                 <div class=" col-6 mb-3">
@@ -104,8 +96,7 @@
                                         label="Modelo"
                                         label-class= "form-label"
                                         input-class= "form-control"
-                                        validation= "required"
-                                        
+                                        validation= "required"   
                                     />
                                 </div>
                                 <div class="col-12 mb-3">
@@ -116,11 +107,11 @@
                                         label="Descrição"
                                         label-class= "form-label"
                                         input-class= "form-control"
-                                        validation= "required"
-                                        
+                                        validation= "required"       
                                     />
                                 </div>
-                                <div class=" d-grid mt-3 gap-2 d-flex flex-row-reverse">
+                            </div>
+                            <div class=" d-grid mt-3 gap-2 d-flex flex-row-reverse">
                                     <FormKit
                                         type="button"
                                         name="button"
@@ -133,8 +124,8 @@
                                         name="button"
                                         label="Limpar"
                                         input-class="btn btn-warning botao-limpar"
+                                        @click="limpar"
                                     />
-                                </div>
                             </div>
                         </FormKit>
                     </div>
@@ -163,9 +154,13 @@ export default {
     },
 
     methods: {
+        limpar() {
+            this.listaItem = {}
+        },
         salvar() {
             this.$store.commit('cadastraItem', {...this.listaItem});
             console.log(this.$store.state.produto)
+            this.$router.push('emprestimo')
         }
     }
     

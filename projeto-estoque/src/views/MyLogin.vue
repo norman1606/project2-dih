@@ -8,7 +8,7 @@
 
                 <div class="col-8">
                     <div class="d-flex justify-content-between criar-conta">
-                        <p>Nãp possui uma conta?</p>
+                        <p>Não possui uma conta?</p>
                         <button type="button" class="btn btn-outline-dark botao-google" @click="cadastrar">
                             Criar Conta
                         </button>
@@ -40,7 +40,7 @@
                                 label-class= "form-label"
                                 input-class= "form-control"
                                 placeholder="Digite sua senha"
-                                validation="required|length:6"
+                                validation="required|length:8"
                             />
                         </div>
                         <div class=" d-grid gap-2 d-flex justify-content-center ">
@@ -56,6 +56,7 @@
                                 name="button"
                                 label="Google"
                                 input-class="btn btn-outline-dark botao-google"
+                                @click="google"
                             />
                         </div>
                         </FormKit>
@@ -83,12 +84,15 @@ export default {
         logar() {
             this.$store.commit('logar',{...this.formData})
             if(this.$store.state.pessoa.usuarioLogado == undefined){
-                alert('Usuario nao encontrado')
+                alert('Usuário não encontrado')
             }
             else{
                 this.$router.push('/inventario')
             }
+        },
 
+        google() {
+            alert('Funcionalidade em Construção')
         }
 
     }

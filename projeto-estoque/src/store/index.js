@@ -9,11 +9,23 @@ const usuarioModulo = {
 
    mutations: {
        cadastrar(state,user) {
+        const userss = JSON.parse(localStorage.getItem('users'))
+        if(userss == null || userss.length === 0) {
            state.users.push(user);
+           const usersJSON = JSON.stringify(state.users);
+           localStorage.setItem('users', usersJSON)
+        }
+        else {
+           userss.push(user);
+           const usersJSON = JSON.stringify(userss);
+           localStorage.setItem('users', usersJSON);
+
+        }
        },
 
        logar(state,formData) {
-           state.usuarioLogado = state.users.find(user => user.email == formData.email && user.password == formData.password);
+           const userss = JSON.parse(localStorage.getItem('users'));
+           state.usuarioLogado = userss.find(user => user.email == formData.email && user.password == formData.password);
            
        }
    }
@@ -26,7 +38,38 @@ const itemModulo = {
 
     mutations: {
         cadastraItem(state,item) {
-            state.lista.push(item)
+            const items = JSON.parse(localStorage.getItem('itens'));
+            if(items == null||items.length === 0) {
+                state.lista.push(item);
+                const itemsJSON = JSON.stringify(state.lista);
+                localStorage.setItem('itens', itemsJSON);
+            }
+            else {
+                items.push(item);
+                const itemsJSON = JSON.stringify(items);
+                localStorage.setItem('itens', itemsJSON);
+            }
+        }
+    }
+}
+const colabModulo = {
+    state: {
+        lista: []
+    },
+
+    mutations: {
+        cadastraColab(state,colab) {
+            const colabs = JSON.parse(localStorage.getItem('colaboradores'));
+            if(colabs == null||colabs.length === 0) {
+                state.lista.push(colab);
+                const colabsJSON = JSON.stringify(state.lista);
+                localStorage.setItem('colaboradores', colabsJSON);
+            }
+            else {
+                colabs.push(colab);
+                const colabsJSON = JSON.stringify(colabs);
+                localStorage.setItem('colaboradores', colabsJSON);
+            }
         }
     }
 }
@@ -35,7 +78,8 @@ const itemModulo = {
 const store = createStore ({
     modules: {
         pessoa: usuarioModulo,
-        produto: itemModulo
+        produto: itemModulo,
+        colaborador: colabModulo
     }
 })
 

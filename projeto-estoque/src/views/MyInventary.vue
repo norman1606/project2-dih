@@ -10,10 +10,10 @@
             <div class="content">
                 <h1 class="mb-4 mt-5">Estatísticas do Sistema</h1>
                 <div class="dados-estat d-flex justify-content-center gap-5">
-                    <CardEstat/>
-                    <CardEstat/>
-                    <CardEstat/>
-                    <CardEstat/>
+                    <CardEstat :valorEstat = 'totalColab' tituloEstat="Colaboradores"/>
+                    <CardEstat :valorEstat = 'totalItens' tituloEstat="Itens"/>
+                    <CardEstat :valorEstat = 'totalValor' tituloEstat="Valor em Produtos"/>
+                    <CardEstat :valorEstat = 'totalEmprest' tituloEstat="Emprestimos"/>
                 </div>
                 <div class="busca">
                     <h4 class="mt-4">Busca de Itens</h4>
@@ -30,7 +30,6 @@
                                     placeholder="Digite o nome do Item"
                                     label-class= "form-label"
                                     input-class= "form-control"
-                                    validation="required"
                                 />
                             </div>
                             <div class="col-2 mt-4 mb-3">
@@ -44,8 +43,10 @@
                         </div>
                     </FormKit>
                 </div>
-                <div class="dados-item mt-3">
-                    <CardItem/>
+                <div class="d-flex produto-lista">
+                    <div class="dados-item mt-3" v-for="listaItem in listaItens" :key="listaItem.codigo">
+                        <CardItem :imagem="listaItem.url" :descricao="listaItem.descricao" :marca="listaItem.marca" :modelo="listaItem.modelo"/>
+                    </div>
                 </div>
             </div>
         </div>
@@ -67,6 +68,34 @@ export default {
         NavBar,
         CardEstat,
         CardItem
+    },
+
+    computed: {
+        totalColab(){
+            const userss = JSON.parse(localStorage.getItem('users'))
+            if(userss == null || userss.length === 0) return 0
+            else return userss.length
+        },
+        totalItens(){
+            const items = JSON.parse(localStorage.getItem('itens'));
+            if(items == null||items.length === 0) return 0
+            else return items.length
+        },
+        totalValor(){
+            const items = JSON.parse(localStorage.getItem('itens'));
+            if(items == null||items.length === 0) return 0
+            else return 'R$ ' + items.reduce((acc,produto)=> acc + parseFloat(produto.valor), 0) 
+
+        },
+        totalEmprest(){
+            return 0
+        },
+        listaItens() {
+            const items = JSON.parse(localStorage.getItem('itens'));
+            if(items == null||items.length === 0) return []
+            else return items
+        }
+        
     }
     
 }
@@ -89,6 +118,14 @@ export default {
 
 .botao-buscar {
     padding: 5px 60px 5px 60px;
+}
+
+.dados-item {
+    width: 25%;
+}
+
+.produto-lista{
+    gap: 50px;
 }
 
 

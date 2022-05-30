@@ -15,7 +15,7 @@
                         <FormKit
                             type="form"
                             :actions="false"
-                            v-model="formData"
+                            v-model="formColab"
                         >
                             <div class="row g-2">
                                 <div class=" col-6 mb-3">
@@ -80,6 +80,7 @@
                                         type="select"
                                         name="cargo"
                                         label="Cargo"
+                                        placeholder="Selecione"
                                         label-class= "form-label"
                                         input-class= "form-control"
                                         validation= "required"
@@ -92,15 +93,7 @@
                                     />
                                 </div>
                             </div>
-                        </FormKit>
-                    </div>
-                    <div class="dados-endereco">
-                        <h4 class="mb-4 mt-5">Dados de Endereço</h4>
-                        <FormKit
-                            type="form"
-                            :actions="false"
-                            v-model="formData"
-                        >
+                            <h4 class="mb-4 mt-5">Dados de Endereço</h4>
                             <div class="row g-2">
                                 <div class=" col-4 mb-3">
                                     <FormKit
@@ -110,6 +103,7 @@
                                         label-class= "form-label"
                                         input-class= "form-control"
                                         validation="required"
+                                        @input="getCEP"
                                     />
                                 </div>
                                 <div class=" col-6 mb-3">
@@ -150,11 +144,10 @@
                                         label="Número"
                                         label-class= "form-label"
                                         input-class= "form-control"
-                                        validation= "required"
-                                        
+                                        validation= "required"   
                                     />
                                 </div>
-                                <div class="col-4 mb-3">
+                                                                <div class="col-4 mb-3">
                                     <FormKit
                                         type="text"
                                         name="complemento"
@@ -191,12 +184,14 @@
                                     name="button"
                                     label="Salvar"
                                     input-class="btn btn-success botao-salvar"
+                                    @click="salvar"
                                 />
                                 <FormKit
                                     type="button"
                                     name="button"
                                     label="Limpar"
                                     input-class="btn btn-warning botao-limpar"
+                                    @click="limpar"
                                 />
                             </div>
                         </FormKit>
@@ -215,9 +210,39 @@
 import NavBar from "../components/NavBar.vue"
 import SideBar from "../components/SideBar.vue"
 export default {
+    data(){
+        return{
+            formColab: {}
+        }
+    },
+
     components: {
         SideBar,
         NavBar
+    },
+
+    methods: {
+        limpar() {
+            this.formColab = {}
+        },
+        salvar() {
+            this.$store.commit('cadastraColab', {...this.formColab});
+            console.log(this.$store.state.colaborador)
+            this.$router.push('listaColab')
+        },
+        getCEP() {
+            if(this.formColab.cep != null && this.formColab.cep.length === 8){  
+            this.axios.get('https://viacep.com.br/ws/'+  this.formColab.cep  + '/json/').then(
+                (response) => {
+                    this.formColab.cidade = response.data.localidade
+                    this.formColab.estado = response.data.uf
+                    this.formColab.logradouro = response.data.logradouro
+                    this.formColab.bairro = response.data.bairro
+                }
+            )
+            }
+
+        }
     }
     
 }
